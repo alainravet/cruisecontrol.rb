@@ -1,0 +1,7 @@
+<%  
+    metric_fu_output = build.additional_artifacts.select{|a| a.to_s == 'output'}.first
+    if metric_fu_output 
+      path = build_artifact_path(:project => project.name, :build => build.label, :path => 'output')
+%>
+  <%= link_to 'metric_fu', path , { :popup => true, :style => 'font-family:helvetica; font-weight:bold; color:#ED1556'}  %>
+<%  end -%>

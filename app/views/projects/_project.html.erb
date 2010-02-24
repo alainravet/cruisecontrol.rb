@@ -23,11 +23,16 @@
       <% unless recent_builds.empty? %>
         <div class="builds_list">
           <% recent_builds.each do |build| %>
-            <% if build == recent_builds.first %>
-                <div class="build_summary"><%= link_to_build_with_elapsed_time(project, build) %></div>
-            <% else %>
-                <div class="build_summary"><%= link_to_build(project, build) %></div>
-            <% end %>
+            <div class="build_summary">
+              <%= render :partial => 'metric_fu_link', :locals => {:build => build, :project => project} %>
+              <span class="link">
+                <% if build == recent_builds.first %>
+                    <%= link_to_build_with_elapsed_time(project, build) %>
+                <% else %>
+                    <%= link_to_build(project, build) %>
+                <% end %>
+              </span>
+            </div>
           <% end %>
         </div>
       <% end %>
